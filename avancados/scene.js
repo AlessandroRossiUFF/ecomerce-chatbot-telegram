@@ -1,15 +1,15 @@
-const env = require('../.env')
+const env = '5713310795:AAE4impasXSHVO2QTRVRcqYCyp07ZHaBLfo'
 const Telegraf = require('telegraf')
 const session = require('telegraf/session')
 const Stage = require('telegraf/stage')
 const Scene = require('telegraf/scenes/base')
 const { enter, leave } = Stage
-const bot = new Telegraf(env.token)
+const bot = new Telegraf(env)
 
 bot.start(ctx => {
-    const name = ctx.update.message.from.first_name
-    ctx.reply(`Seja bem vindo, ${name}!`)
-    ctx.reply(`Entre com /echo ou /soma para iniciar...`)
+  const name = ctx.update.message.from.first_name
+  ctx.reply(`Seja bem vindo, ${name}!`)
+  ctx.reply(`Entre com /echo ou /soma para iniciar...`)
 })
 
 const echoScene = new Scene('echo')
@@ -25,21 +25,21 @@ sumScene.enter(ctx => ctx.reply('Entrando em Sum Scene'))
 sumScene.leave(ctx => ctx.reply('Saindo de Sum Scene'))
 
 sumScene.use(async (ctx, next) => {
-    await ctx.reply('Você está em Soma Scene, escreva números para somar')
-    await ctx.reply('Outros comandos: /zerar /sair')
-    next()
+  await ctx.reply('Você está em Soma Scene, escreva números para somar')
+  await ctx.reply('Outros comandos: /zerar /sair')
+  next()
 })
 
 sumScene.command('zerar', ctx => {
-    sum  = 0
-    ctx.reply(`Valor: ${sum}`)
+  sum = 0
+  ctx.reply(`Valor: ${sum}`)
 })
 
 sumScene.command('sair', leave())
 
 sumScene.hears(/(\d+)/, ctx => {
-    sum += parseInt(ctx.match[1])
-    ctx.reply(`Valor: ${sum}`)
+  sum += parseInt(ctx.match[1])
+  ctx.reply(`Valor: ${sum}`)
 })
 
 sumScene.on('message', ctx => ctx.reply('Apenas números, por favor'))

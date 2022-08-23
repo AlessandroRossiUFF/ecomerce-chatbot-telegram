@@ -1,8 +1,8 @@
-const env = require('../.env')
-const Telegraf = require('telegraf')
+token = '5713310795:AAE4impasXSHVO2QTRVRcqYCyp07ZHaBLfo'
+const Telegraf = require('telegraf') 
 const Extra = require('telegraf/extra')
 const Markup = require('telegraf/markup')
-const bot = new Telegraf(env.token)
+const bot = new Telegraf(token)
 
 let contagem = 0
 
