@@ -1,4 +1,6 @@
-token = '5713310795:AAE4impasXSHVO2QTRVRcqYCyp07ZHaBLfo'
+const token = '5713310795:AAE4impasXSHVO2QTRVRcqYCyp07ZHaBLfo'
+
+
 const Telegraf = require('telegraf')
 const moment = require('moment')
 const bot = new Telegraf(token)
